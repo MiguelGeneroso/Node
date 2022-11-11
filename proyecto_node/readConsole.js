@@ -37,7 +37,7 @@ function pregunta(pregunta){
     return question;
 }
 
-// function readConsole(writeAndRead){
+// function readConsole(callback){
 //     let obj = {}
 //     pregunta("¿Cual es tu nombre? ")
 //     .then(nombre =>{
@@ -56,11 +56,11 @@ function pregunta(pregunta){
 //     })
 //     .then(() =>{
 
-//         writeAndRead("pruebaPromesa.json",obj);
+//         callback(obj);
 //     })
 // }
 
-async function readConsole(writeAndRead){
+async function readConsole(callback){
     try {
 
         let nombre = await pregunta("Cual es tu nombre? ");
@@ -69,7 +69,7 @@ async function readConsole(writeAndRead){
         let datos = {name : nombre,
                     surname: apellido,
                     age: edad};
-        writeAndRead("await.json",datos);
+        callback(datos);
         // await fs.writeFile("awaitpersona.json",JSON.stringify(datos));
         // let data = await fs.readFile("awaitpersona.json")
         // console.log(JSON.parse(data));
