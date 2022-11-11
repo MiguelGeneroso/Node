@@ -8,4 +8,4 @@ function ruta(obj){
     writeAndRead("await.json",obj);
 }
 
-readConsole(ruta);
+readConsole(ruta);//READCONSOLE VA A LLAMAR A LA FUNCION RUTA RETORNANDO UN OBJ Y PASANDOSELO A RUTA POR PARAMETRO
