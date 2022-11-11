@@ -11,3 +11,5 @@ router.post("/professional", userCtrl.postProfessional);
 router.put("/professional", userCtrl.putProfessional);
 
 router.delete("/professional", userCtrl.delProfessional);
+
+module.exports = router;
