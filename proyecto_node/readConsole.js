@@ -3,7 +3,7 @@ const readline = require('readline');
 
 let rl = readline.createInterface(process.stdin,process.stdout);
 
-function readConsole(writeAndRead){
+function readConsole(callback){
     rl.question('Nombre?', name => {
         console.log(`Nombre:  ${name}!`);
     
@@ -16,7 +16,7 @@ function readConsole(writeAndRead){
                             apellidos : surName,
                             edad : age}
 
-                writeAndRead("prueba.json",obj);
+                callback(obj);
                 rl.close();
               });
           });
