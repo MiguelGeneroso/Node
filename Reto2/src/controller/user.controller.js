@@ -1,4 +1,4 @@
-let professional = [];
+let professional = null;
 // GET /profesional. Obtiene el profesional.
 // ● POST /profesional. Crea un nuevo objeto profesional.
 // ● PUT /profesional. Modifica los datos del profesional.
@@ -14,8 +14,8 @@ function getStart(req, res){
 function getProfesional(req,res){
 
     let respuesta;
-    if(professional.length != 0){
-        respuesta = professional[req.body.position];
+    if(professional != null){
+        respuesta = professional;
     }else{
         respuesta = {error : true, code : 200, message : "The professional does not exist"}
     }
@@ -27,9 +27,9 @@ function postProfessional(req,res){
     let respuesta;
     console.log(req.body);
 
-    if(professional.length == 0){
+    if(professional === null){
 
-        newProfessional = {nombre: req.body.nombre,
+        professional = {nombre: req.body.nombre,
                         edad: req.body.edad,
                         peso: req.body.peso,
                         altura: req.body.altura,
@@ -37,8 +37,6 @@ function postProfessional(req,res){
                         nacionalidad: req.body.nacionalidad,
                         numeroOscars: req.body.numeroOscars,
                         profesion: req.body.profesion};
-
-        professional.push(newProfessional);
 
         respuesta = {error : false, code : 200, message : "Professional created"}
     }else{
@@ -59,6 +57,7 @@ function putProfessional(req,res){
         professional.nacionalidad = req.body.nacionalidad;
         professional.numeroOscars = req.body.numeroOscars;
         professional.profesion = req.body.profesion;
+        respuesta = {error : false, code : 200, message : "El professional no existe", resultado : professional};
         
     }else{
         respuesta = {error : true, code : 200, message : "El professional no existe", resultado : professional};
