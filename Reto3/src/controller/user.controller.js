@@ -14,6 +14,18 @@ function getStart(req, res){
 function getProfesional(req,res){
 
     let respuesta;
+    if(professional != null){
+        respuesta = professional;
+    }else{
+        respuesta = {error : true, code : 200, message : "The professional does not exist"}
+    }
+
+    res.send(respuesta);
+}
+
+function getProfesionalPosition(req,res){
+
+    let respuesta;
     if(professional.length != 0){
         respuesta = professional[req.body.position];
     }else{
@@ -27,7 +39,7 @@ function postProfessional(req,res){
     let respuesta;
     console.log(req.body);
 
-    if(professional.length == 0){
+    if(professional.length == 0 || professional.length != 0){
 
         newProfessional = {nombre: req.body.nombre,
                         edad: req.body.edad,
@@ -69,7 +81,9 @@ function putProfessional(req,res){
 function delProfessional(req,res){
     let respuesta;
     if(professional != null){
-        professional = null;
+        let position = req.body.position;
+        console.log(position);
+        professional.splice(position,1);
         respuesta = {error : false, code : 200, message : "Professional deleted", resultado : professional};
         
     }else{
