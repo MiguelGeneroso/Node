@@ -54,7 +54,7 @@ function pregunta(pregunta){
 //     .then(edad=>{
 //         console.log("Edad: " + edad);
 //         obj.age = edad;
-//         resolve(obj);
+//         return obj;
 //     })
 //     .catch((error) =>{
 //         console.log(error);
@@ -71,7 +71,7 @@ async function readConsole(){
                     surname: apellido,
                     age: edad};
         console.log(datos);
-        resolve(datos);
+        return datos;
         
     } catch (error) {
         console.log(error);
