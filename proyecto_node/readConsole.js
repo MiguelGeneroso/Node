@@ -1,3 +1,4 @@
+const { resolve } = require('path');
 const readline = require('readline');
 // let {writeAndRead} = require("./writeAndReadObject");
 
@@ -37,7 +38,7 @@ function pregunta(pregunta){
     return question;
 }
 
-// function readConsole(callback){
+// function readConsole(){
 //     let obj = {}
 //     pregunta("¿Cual es tu nombre? ")
 //     .then(nombre =>{
@@ -53,14 +54,14 @@ function pregunta(pregunta){
 //     .then(edad=>{
 //         console.log("Edad: " + edad);
 //         obj.age = edad;
+//         resolve(obj);
 //     })
-//     .then(() =>{
-
-//         callback(obj);
+//     .catch((error) =>{
+//         console.log(error);
 //     })
 // }
 
-async function readConsole(callback){
+async function readConsole(){
     try {
 
         let nombre = await pregunta("Cual es tu nombre? ");
@@ -69,10 +70,8 @@ async function readConsole(callback){
         let datos = {name : nombre,
                     surname: apellido,
                     age: edad};
-        callback(datos);
-        // await fs.writeFile("awaitpersona.json",JSON.stringify(datos));
-        // let data = await fs.readFile("awaitpersona.json")
-        // console.log(JSON.parse(data));
+        console.log(datos);
+        resolve(datos);
         
     } catch (error) {
         console.log(error);
