@@ -5,6 +5,7 @@ const userCtrl = require("../controller/user.controller");
 router.get("/", userCtrl.getStart);
 
 router.get("/professional", userCtrl.getProfesional);
+router.get("/professionalposition",userCtrl.getAllProfesional)
 
 router.post("/professional", userCtrl.postProfessional);
 

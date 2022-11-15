@@ -15,7 +15,8 @@ function getProfesional(req,res){
 
     let respuesta;
     if(professional != null){
-        respuesta = professional;
+        let position = req.body.position;
+        respuesta = professional[position];
     }else{
         respuesta = {error : true, code : 200, message : "The professional does not exist"}
     }
@@ -23,11 +24,11 @@ function getProfesional(req,res){
     res.send(respuesta);
 }
 
-function getProfesionalPosition(req,res){
+function getAllProfesional(req,res){
 
     let respuesta;
-    if(professional.length != 0){
-        respuesta = professional[req.body.position];
+    if(professional != null){
+        respuesta = professional;
     }else{
         respuesta = {error : true, code : 200, message : "The professional does not exist"}
     }
@@ -63,14 +64,15 @@ function postProfessional(req,res){
 function putProfessional(req,res){
     let respuesta;
     if(professional != null){
-        professional.nombre = req.body.nombre;
-        professional.edad = req.body.edad;
-        professional.peso = req.body.peso;
-        professional.altura = req.body.altura;
-        professional.isRetired = req.body.isRetired;
-        professional.nacionalidad = req.body.nacionalidad;
-        professional.numeroOscars = req.body.numeroOscars;
-        professional.profesion = req.body.profesion;
+        let position = req.body.position;
+        professional[position].nombre = req.body.nombre;
+        professional[position].edad = req.body.edad;
+        professional[position].peso = req.body.peso;
+        professional[position].altura = req.body.altura;
+        professional[position].isRetired = req.body.isRetired;
+        professional[position].nacionalidad = req.body.nacionalidad;
+        professional[position].numeroOscars = req.body.numeroOscars;
+        professional[position].profesion = req.body.profesion;
         
     }else{
         respuesta = {error : true, code : 200, message : "El professional no existe", resultado : professional};
@@ -92,4 +94,4 @@ function delProfessional(req,res){
     res.send(respuesta);
 }
 
-module.exports = {getProfesional,getStart,putProfessional,postProfessional,delProfessional}
+module.exports = {getProfesional,getStart,putProfessional,postProfessional,delProfessional,getAllProfesional}
